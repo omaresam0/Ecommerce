@@ -20,7 +20,7 @@ interface ExtendRequest extends Request {
         return;
     }
 
-    jwt.verify(token, "kcQOgjuIRjsHOlrWCxmzwX0yTXoW2bgt", async (err, payload) => {
+    jwt.verify(token, process.env.JWT_SECRET || ``, async (err, payload) => {
         if(err){
             res.status(403).send("Invalid token");
             return;
